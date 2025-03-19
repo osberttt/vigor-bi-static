@@ -62,7 +62,7 @@ export default function CustomDatePicker({ value, setValue, onDateChange }) {
       <DatePicker
         value={value}
         label={value == null ? null : value.format('MMM DD, YYYY')}
-        onChange={(newValue) => {
+        onAccept={(newValue) => {
           // Check if the new value contains both day, month, and year
           if (newValue && newValue.isValid() && newValue.date() !== 1) {
             setValue(newValue);  // Update only when the date is complete
@@ -81,6 +81,8 @@ export default function CustomDatePicker({ value, setValue, onDateChange }) {
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         views={['day', 'month', 'year']}
+        maxDate={dayjs('2025-3-13')}
+        minDate={dayjs('2020-01-01')}
       />
     </LocalizationProvider>
   );
